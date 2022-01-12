@@ -29,6 +29,7 @@ namespace Nextflix
         {
             services.AddSingleton<IDirectorRepository, DirectorRepository>();
             services.AddSingleton<IMovieRepository, MovieRepository>();
+            services.AddSingleton<IUserRepository, UserRepository>();
             services.AddControllers();
             services.AddSwaggerGen();
         }

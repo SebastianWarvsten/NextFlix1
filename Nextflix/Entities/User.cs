@@ -1,4 +1,5 @@
 ﻿using System;
+
 namespace Nextflix.Entities
 {
     public class User
