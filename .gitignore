@@ -13,6 +13,11 @@
 # User-specific files (MonoDevelop/Xamarin Studio)
 *.userprefs
 
+### DotnetCore ###
+# .NET Core build folders
+bin/
+obj/
+
 # Mono auto generated files
 mono_crash.*
 
