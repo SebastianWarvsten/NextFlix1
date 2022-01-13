@@ -11,7 +11,9 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Nextflix.Controllers;
+using Nextflix.Data;
 using Nextflix.Repositories;
+using Microsoft.EntityFrameworkCore;
 
 namespace Nextflix
 {
@@ -32,6 +34,8 @@ namespace Nextflix
             services.AddSingleton<IUserRepository, UserRepository>();
             services.AddControllers();
             services.AddSwaggerGen();
+            
+            services.AddDbContext<MyDbContext>(options => options.UseSqlServer(Configuration.GetConnectionString("Default")));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
