@@ -13,6 +13,9 @@ namespace Nextflix.Controllers
     {
         private readonly IMovieRepository _repository;
 
+        // private readonly IReviewRepository _revRepository;
+        
+
         public MoviesController(IMovieRepository repository) { _repository = repository; }
 
         [HttpGet]
