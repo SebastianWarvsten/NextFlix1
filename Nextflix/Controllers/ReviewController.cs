@@ -7,7 +7,7 @@ using System.Collections.Generic;
 
 namespace Nextflix.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("api/Movies/{movieId}/[controller]")]
     [ApiController]
     public class ReviewRController : ControllerBase
     {
@@ -16,7 +16,7 @@ namespace Nextflix.Controllers
         public ReviewRController(IReviewRepository reviewRepository) { _reviewRepository = reviewRepository; }
 
         [HttpGet]
-        public IEnumerable<Review> GetReviews() { return _reviewRepository.GetReviews(); }
+        public IEnumerable<Review> GetReviews(int id) { return _reviewRepository.GetReviews(id); }
 
         [HttpGet("{id}")]
         public ActionResult<Movie> GetReview(int id) 

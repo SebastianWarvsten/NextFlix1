@@ -17,7 +17,8 @@ namespace Nextflix.Repositories
         { 
             new Review() { id = 1, review = "It was nice", points = 5, userID  = 1,  movieID = 1} }};
 
-        public IEnumerable<Review> GetReviews()
+        public IEnumerable<Review> GetReviews(int id)
+        
         {
             return _reviewCollection;
         }
