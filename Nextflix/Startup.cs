@@ -15,6 +15,7 @@ using Nextflix.Data;
 using Nextflix.Repositories;
 using Microsoft.EntityFrameworkCore;
 
+
 namespace Nextflix
 {
     public class Startup
@@ -35,7 +36,7 @@ namespace Nextflix
             services.AddControllers();
             services.AddSwaggerGen();
             
-            services.AddDbContext<MyDbContext>(options => options.UseSqlServer(Configuration.GetConnectionString("Default")));
+            services.AddDbContext<MyDbContext>(options => options.UseMySQL(Configuration.GetConnectionString("Default")));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
