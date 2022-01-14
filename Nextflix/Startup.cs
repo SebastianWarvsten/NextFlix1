@@ -15,6 +15,7 @@ using Nextflix.Data;
 using Nextflix.Repositories;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.SqlServer;
+using System.Text.Json.Serialization;
 
 namespace Nextflix
 {
@@ -30,10 +31,10 @@ namespace Nextflix
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddSingleton<IDirectorRepository, DirectorRepository>();
+            services.AddScoped<IDirectorRepository, DirectorRepository>();
             services.AddSingleton<IMovieRepository, MovieRepository>();
             services.AddSingleton<IUserRepository, UserRepository>();
-            services.AddControllers();
+            services.AddControllers().AddJsonOptions(o => o.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.Preserve);
             services.AddSwaggerGen();
 
             services.AddDbContext<ApplicationDbContext>(options => options.UseMySQL(Configuration.GetConnectionString("DefaultConnection")));

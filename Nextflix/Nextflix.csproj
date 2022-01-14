@@ -9,7 +9,6 @@
     <None Remove="Entities\" />
     <None Remove="Repository\" />
     <None Remove="Microsoft.OpenApi" />
-    <None Remove="Models\" />
     <None Remove="EntityFramework" />
     <None Remove="Data\" />
     <None Remove="Microsoft.EntityFrameworkCore" />
@@ -22,7 +21,6 @@
   <ItemGroup>
     <Folder Include="Entities\" />
     <Folder Include="Repositories\" />
-    <Folder Include="Models\" />
     <Folder Include="Data\" />
   </ItemGroup>
   <ItemGroup>
