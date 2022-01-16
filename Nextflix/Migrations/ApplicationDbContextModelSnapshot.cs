@@ -31,7 +31,7 @@ namespace Nextflix.Migrations
 
                     b.HasKey("id");
 
-                    b.ToTable("Directors");
+                    b.ToTable("Director");
                 });
 
             modelBuilder.Entity("Nextflix.Entities.Movie", b =>
@@ -79,7 +79,7 @@ namespace Nextflix.Migrations
 
             modelBuilder.Entity("Nextflix.Entities.User", b =>
                 {
-                    b.Property<int>("id")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
@@ -89,9 +89,9 @@ namespace Nextflix.Migrations
                     b.Property<string>("userName")
                         .HasColumnType("text");
 
-                    b.HasKey("id");
+                    b.HasKey("Id");
 
-                    b.ToTable("User");
+                    b.ToTable("Users");
                 });
 #pragma warning restore 612, 618
         }

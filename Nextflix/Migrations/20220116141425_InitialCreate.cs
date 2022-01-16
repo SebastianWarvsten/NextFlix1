@@ -9,7 +9,7 @@ namespace Nextflix.Migrations
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
-                name: "Directors",
+                name: "Director",
                 columns: table => new
                 {
                     id = table.Column<int>(type: "int", nullable: false)
@@ -19,7 +19,7 @@ namespace Nextflix.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Directors", x => x.id);
+                    table.PrimaryKey("PK_Director", x => x.id);
                 });
 
             migrationBuilder.CreateTable(
@@ -54,24 +54,24 @@ namespace Nextflix.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "User",
+                name: "Users",
                 columns: table => new
                 {
-                    id = table.Column<int>(type: "int", nullable: false)
+                    Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("MySQL:ValueGenerationStrategy", MySQLValueGenerationStrategy.IdentityColumn),
                     userName = table.Column<string>(type: "text", nullable: true),
                     userEmail = table.Column<string>(type: "text", nullable: true)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_User", x => x.id);
+                    table.PrimaryKey("PK_Users", x => x.Id);
                 });
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "Directors");
+                name: "Director");
 
             migrationBuilder.DropTable(
                 name: "Movie");
@@ -80,7 +80,7 @@ namespace Nextflix.Migrations
                 name: "Review");
 
             migrationBuilder.DropTable(
-                name: "User");
+                name: "Users");
         }
     }
 }

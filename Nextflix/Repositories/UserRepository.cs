@@ -3,42 +3,48 @@ using System.Collections.Generic;
 using System.Linq;
 using Nextflix.Controllers;
 using Nextflix.Entities;
+using Nextflix.Data;
 
 namespace Nextflix.Repositories
 {
     public class UserRepository : IUserRepository
     {
-        private readonly List<User> _userCollection = new List<User>()
+
+        private readonly ApplicationDbContext _context;
+
+        public UserRepository(ApplicationDbContext context)
         {
-            new User() { id = 1, userName = "jimmy", userEmail = "j@live.se" }
-        };
+            _context = context;
+        }
 
         public IEnumerable<User> GetUsers()
         {
-            return _userCollection;
+            return _context.Users.ToList();
         }
 
         public void CreateUser(User user)
         {
-            _userCollection.Add(user);
+            _context.Users.Add(user);
+            _context.SaveChanges();
         }
 
         public void DeleteUser(int id)
         {
-            User index = _userCollection.Find(e => e.id == id);
-            _userCollection.Remove(index);
+            var user = _context.Users.Where(u => u.Id == id).FirstOrDefault();
+            _context.Remove(user);
+            _context.SaveChanges();
+            
         }
 
         public User GetUser(int id)
         {
-            var director = _userCollection.Where(item => item.id == id);
-            return director.SingleOrDefault();
+            return _context.Users.Where(u => u.Id == id).FirstOrDefault();
         }
 
         public void UpdateUser(User user)
         {
-            var index = _userCollection.FindIndex(e => e.id == user.id);
-            _userCollection[index] = user;
+            _context.Update(user);
+            _context.SaveChanges();
         }
     }
 }
