@@ -9,7 +9,7 @@ using Nextflix.Data;
 namespace Nextflix.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20220116141425_InitialCreate")]
+    [Migration("20220116150030_InitialCreate")]
     partial class InitialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -21,7 +21,7 @@ namespace Nextflix.Migrations
 
             modelBuilder.Entity("Nextflix.Entities.Director", b =>
                 {
-                    b.Property<int>("id")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
@@ -31,9 +31,9 @@ namespace Nextflix.Migrations
                     b.Property<string>("lastName")
                         .HasColumnType("text");
 
-                    b.HasKey("id");
+                    b.HasKey("Id");
 
-                    b.ToTable("Director");
+                    b.ToTable("Directors");
                 });
 
             modelBuilder.Entity("Nextflix.Entities.Movie", b =>

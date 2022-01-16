@@ -10,7 +10,7 @@ namespace Nextflix.Controllers
     [ApiController]
     public class DirectorsController : ControllerBase
     {
-        private IDirectorRepository _repository;
+        private readonly IDirectorRepository _repository;
 
         public DirectorsController(IDirectorRepository repository)
         {
@@ -63,12 +63,12 @@ namespace Nextflix.Controllers
         {
             Director nDirector = new Director()
             {
-                id = director.id,
+                Id = director.Id,
                 firstName = director.firstName,
                 lastName = director.lastName,
             };
             _repository.AddDirector(director);
-            return CreatedAtAction(nameof(GetDirector), new { id = director.id }, director);
+            return CreatedAtAction(nameof(GetDirector), new { Id = director.Id }, director);
         }
     }
 }

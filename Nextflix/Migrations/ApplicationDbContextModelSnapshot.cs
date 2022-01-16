@@ -19,7 +19,7 @@ namespace Nextflix.Migrations
 
             modelBuilder.Entity("Nextflix.Entities.Director", b =>
                 {
-                    b.Property<int>("id")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
@@ -29,9 +29,9 @@ namespace Nextflix.Migrations
                     b.Property<string>("lastName")
                         .HasColumnType("text");
 
-                    b.HasKey("id");
+                    b.HasKey("Id");
 
-                    b.ToTable("Director");
+                    b.ToTable("Directors");
                 });
 
             modelBuilder.Entity("Nextflix.Entities.Movie", b =>
