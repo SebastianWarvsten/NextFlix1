@@ -9,7 +9,7 @@ using Nextflix.Data;
 namespace Nextflix.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20220116150030_InitialCreate")]
+    [Migration("20220116152458_InitialCreate")]
     partial class InitialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
