@@ -40,16 +40,16 @@ namespace Nextflix.Controllers
         {
             User nUser = new User()
             {
-                id = user.id,
+                Id = user.Id,
                 userName = user.userName,
                 userEmail = user.userEmail,
             };
             _repository.CreateUser(user);
-            return CreatedAtAction(nameof(GetUser), new { id = user.id }, user);
+            return CreatedAtAction(nameof(GetUser), new { id = user.Id }, user);
         }
 
         [HttpDelete("{id}")]
-        public ActionResult DeleteDirector(int id)
+        public ActionResult DeleteUser(int id)
         {
             _repository.DeleteUser(id);
             return NoContent();

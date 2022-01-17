@@ -32,8 +32,8 @@ namespace Nextflix
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddScoped<IDirectorRepository, DirectorRepository>();
-            services.AddSingleton<IMovieRepository, MovieRepository>();
-            services.AddSingleton<IUserRepository, UserRepository>();
+            services.AddScoped<IMovieRepository, MovieRepository>();
+            services.AddScoped<IUserRepository, UserRepository>();
             services.AddControllers().AddJsonOptions(o => o.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.Preserve);
             services.AddSwaggerGen();
 
