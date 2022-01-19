@@ -47,6 +47,7 @@ namespace Nextflix.Repositories
         {
             var reviewToDelete = _context.Review.Where(m => m.Id == id).SingleOrDefault();
             _context.Review.Remove(reviewToDelete);
+            _context.SaveChanges();
         }
 
 

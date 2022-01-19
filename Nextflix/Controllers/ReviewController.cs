@@ -9,14 +9,14 @@ namespace Nextflix.Controllers
 {
     [Route("api/Movies/{movieId}/[controller]")]
     [ApiController]
-    public class ReviewRController : ControllerBase
+    public class ReviewController : ControllerBase
     {
         private readonly  IReviewRepository _reviewRepository;
 
-        public ReviewRController(IReviewRepository reviewRepository) { _reviewRepository = reviewRepository; }
+        public ReviewController(IReviewRepository reviewRepository) { _reviewRepository = reviewRepository; }
 
         [HttpGet]
-        //public IEnumerable<Review> GetReviews(int id) { return _reviewRepository.GetReviews(id); }
+        
        
         public ActionResult<IEnumerable<Review>> GetReviewsForMovie(int movieId)
         {
