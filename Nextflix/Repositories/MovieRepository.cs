@@ -1,4 +1,5 @@
 ﻿using Nextflix.Controllers;
+using Nextflix.Data;
 using Nextflix.Entities;
 using Nextflix.Repositories;
 using System.Collections.Generic;
@@ -8,30 +9,39 @@ namespace Nextflix.Repositories
 {
     public class MovieRepository : IMovieRepository
     {
-        private readonly List<Movie> _movieCollection = new List<Movie>() { new Movie() { id = 1, title = "Avatar", description = "Humans vs Aliens", directorId = 1, category = 0 } };
+        private readonly ApplicationDbContext _context;
+
+        public MovieRepository(ApplicationDbContext context)
+        {
+            _context = context;
+        }
         public void CreateMovie(Movie movie)
         {
-            _movieCollection.Add(new Movie() { id = movie.id, title = movie.title, description = movie.description, directorId = movie.directorId, category = movie.category });
+            _context.Movie.Add(movie);
+            _context.SaveChanges();
         }
 
         public void DeleteMovie(Movie movie)
         {
-            _movieCollection.Remove(movie);
+            _context.Movie.Remove(movie);
+            _context.SaveChanges();
         }
 
         public Movie GetMovie(int id)
         {
-            return _movieCollection.Where(item => item.id == id).FirstOrDefault();
+            return _context.Movie.Where(item => item.id == id).FirstOrDefault();
+
         }
 
         public IEnumerable<Movie> GetMovies()
         {
-            return _movieCollection;
+            return _context.Movie;
         }
 
         public void UpdateMovie(Movie movie)
         {
-            var index = _movieCollection.FindIndex(existingMovie => existingMovie.id == movie.id);
+            _context.Update(movie);
+            _context.SaveChanges();
         }
     }
 }
