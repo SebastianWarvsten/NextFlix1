@@ -8,7 +8,7 @@ namespace Nextflix.Controllers
         IEnumerable<Review> GetReviews(int id);
         Review GetReview(int id);
        
-        void CreateReview(Review review);
+        void CreateReview(int movieId, Review review, int userID);
          void DeleteReview(int id);
     }
 }

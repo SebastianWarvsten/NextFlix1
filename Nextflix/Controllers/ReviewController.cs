@@ -16,9 +16,17 @@ namespace Nextflix.Controllers
         public ReviewRController(IReviewRepository reviewRepository) { _reviewRepository = reviewRepository; }
 
         [HttpGet]
-        public IEnumerable<Review> GetReviews(int id) { return _reviewRepository.GetReviews(id); }
+        //public IEnumerable<Review> GetReviews(int id) { return _reviewRepository.GetReviews(id); }
+       
+        public ActionResult<IEnumerable<Review>> GetReviewsForMovie(int movieId)
+        {
+            System.Console.WriteLine($"--> Get reviews for movie: {movieId}");
+            return Ok(_reviewRepository.GetReviews(movieId));
 
-        [HttpGet("{id}")]
+        }
+
+
+        [HttpGet("{id}", Name = "GetReview")]
         public ActionResult<Movie> GetReview(int id) 
         {
             var review = _reviewRepository.GetReview(id);
@@ -39,7 +47,7 @@ namespace Nextflix.Controllers
             var reviewItem = _reviewRepository.GetReview(id);
             if (reviewItem != null)
             {
-                _reviewRepository.DeleteReview(reviewItem.id);
+                _reviewRepository.DeleteReview(reviewItem.Id);
                 return Ok("Review successfuly deleted!");
             }
             else
@@ -49,13 +57,13 @@ namespace Nextflix.Controllers
         }
 
 
-
         [HttpPost]
 
-         public ActionResult<Review> CreateReview(Review rev)
+        public ActionResult<Review> CreateReview(int movieId, Review rev, int userID)
         {
-            _reviewRepository.CreateReview(rev);
-            return CreatedAtAction(nameof(GetReview), new {id = rev.id, review = rev.review, points = rev.points, userID = rev.userID, movieID = rev.movieID}, rev);
+            System.Console.WriteLine("---> Creating review");
+            _reviewRepository.CreateReview(movieId, rev,  userID);
+            return Ok();
 
         }
     }

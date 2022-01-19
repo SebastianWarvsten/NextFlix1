@@ -62,17 +62,23 @@ namespace Nextflix.Migrations
 
             modelBuilder.Entity("Nextflix.Entities.Review", b =>
                 {
-                    b.Property<int>("id")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    b.Property<int>("points")
+                    b.Property<int>("MovieID")
                         .HasColumnType("int");
 
-                    b.Property<string>("review")
+                    b.Property<int>("Points")
+                        .HasColumnType("int");
+
+                    b.Property<int>("UserID")
+                        .HasColumnType("int");
+
+                    b.Property<string>("UserReview")
                         .HasColumnType("text");
 
-                    b.HasKey("id");
+                    b.HasKey("Id");
 
                     b.ToTable("Review");
                 });

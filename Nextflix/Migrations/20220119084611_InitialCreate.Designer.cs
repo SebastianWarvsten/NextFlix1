@@ -9,7 +9,7 @@ using Nextflix.Data;
 namespace Nextflix.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20220116152458_InitialCreate")]
+    [Migration("20220119084611_InitialCreate")]
     partial class InitialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -64,17 +64,23 @@ namespace Nextflix.Migrations
 
             modelBuilder.Entity("Nextflix.Entities.Review", b =>
                 {
-                    b.Property<int>("id")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    b.Property<int>("points")
+                    b.Property<int>("MovieID")
                         .HasColumnType("int");
 
-                    b.Property<string>("review")
+                    b.Property<int>("Points")
+                        .HasColumnType("int");
+
+                    b.Property<int>("UserID")
+                        .HasColumnType("int");
+
+                    b.Property<string>("UserReview")
                         .HasColumnType("text");
 
-                    b.HasKey("id");
+                    b.HasKey("Id");
 
                     b.ToTable("Review");
                 });
