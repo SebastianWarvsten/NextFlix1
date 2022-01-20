@@ -9,8 +9,8 @@ using Nextflix.Data;
 namespace Nextflix.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20220120103527_InitialCreate")]
-    partial class InitialCreate
+    [Migration("20220120123008_Initial")]
+    partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -97,10 +97,10 @@ namespace Nextflix.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    b.Property<string>("userEmail")
+                    b.Property<string>("UserEmail")
                         .HasColumnType("text");
 
-                    b.Property<string>("userName")
+                    b.Property<string>("UserName")
                         .HasColumnType("text");
 
                     b.HasKey("Id");
@@ -111,7 +111,7 @@ namespace Nextflix.Migrations
             modelBuilder.Entity("Nextflix.Entities.Movie", b =>
                 {
                     b.HasOne("Nextflix.Entities.Director", "Director")
-                        .WithMany("Movie")
+                        .WithMany()
                         .HasForeignKey("DirectorID")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -122,7 +122,7 @@ namespace Nextflix.Migrations
             modelBuilder.Entity("Nextflix.Entities.Review", b =>
                 {
                     b.HasOne("Nextflix.Entities.Movie", "Movie")
-                        .WithMany("Reviews")
+                        .WithMany()
                         .HasForeignKey("MovieID")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -136,16 +136,6 @@ namespace Nextflix.Migrations
                     b.Navigation("Movie");
 
                     b.Navigation("User");
-                });
-
-            modelBuilder.Entity("Nextflix.Entities.Director", b =>
-                {
-                    b.Navigation("Movie");
-                });
-
-            modelBuilder.Entity("Nextflix.Entities.Movie", b =>
-                {
-                    b.Navigation("Reviews");
                 });
 
             modelBuilder.Entity("Nextflix.Entities.User", b =>

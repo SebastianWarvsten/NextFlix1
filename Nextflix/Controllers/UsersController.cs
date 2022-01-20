@@ -41,8 +41,8 @@ namespace Nextflix.Controllers
             User nUser = new User()
             {
                 Id = user.Id,
-                userName = user.userName,
-                userEmail = user.userEmail,
+                UserName = user.UserName,
+                UserEmail = user.UserEmail,
             };
             _repository.CreateUser(user);
             return CreatedAtAction(nameof(GetUser), new { id = user.Id }, user);
@@ -63,8 +63,8 @@ namespace Nextflix.Controllers
             {
                 return NotFound();
             }
-            selectedUser.userName = user.userName;
-            selectedUser.userEmail = user.userEmail;
+            selectedUser.UserName = user.UserName;
+            selectedUser.UserEmail = user.UserEmail;
             _repository.UpdateUser(selectedUser);
             return Ok();
         }

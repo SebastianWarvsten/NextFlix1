@@ -12,6 +12,6 @@ namespace Nextflix.Entities
         public int DirectorID { get; set; }
         public Category Category { get; set; }
         public Director Director { get; set; }
-        public ICollection<Review> Reviews { get; set; } = new List<Review>();
+        //public ICollection<Review> Reviews { get; set; } = new List<Review>();
     }
 }
