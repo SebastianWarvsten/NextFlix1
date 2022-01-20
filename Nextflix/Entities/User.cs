@@ -8,6 +8,6 @@ namespace Nextflix.Entities
         public int Id { get; set; }
         public string userName { get; set; }
         public string userEmail { get; set; }
-        //public ICollection<Review> Reviews { get; set; } = new List<Review>();
+        public ICollection<Review> Reviews { get; set; } = new List<Review>();
     }
 }

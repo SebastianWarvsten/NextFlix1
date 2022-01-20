@@ -8,5 +8,7 @@ namespace Nextflix.Entities
         public int Points { get; set; }
          public int UserID { get; set; }
          public int MovieID{get;set;}
+        public Movie Movie { get; set; }
+        public User User { get; set; }
     }
 }

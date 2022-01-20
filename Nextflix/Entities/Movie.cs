@@ -5,11 +5,13 @@ namespace Nextflix.Entities
 {
     public class Movie
     {
-        public int id { get; set; }
-        public DateTime releaseDate { get; set; }
-        public string title { get; set; }
-        public string description { get; set; }
-        public int directorId { get; set; }
-        public Category category { get; set; }
+        public int Id { get; set; }
+        public DateTime ReleaseDate { get; set; }
+        public string Title { get; set; }
+        public string Description { get; set; }
+        public int DirectorID { get; set; }
+        public Category Category { get; set; }
+        public Director Director { get; set; }
+        public ICollection<Review> Reviews { get; set; } = new List<Review>();
     }
 }

@@ -34,19 +34,19 @@ namespace Nextflix.Controllers
         }
 
         [HttpPut("{id}")]
-        public ActionResult<Movie> UpdateDog([FromBody] Movie movie, int id)
+        public ActionResult<Movie> UpdateMovie([FromBody] Movie movie, int id)
         {
             var existingMovie = _repository.GetMovie(id);
             if (existingMovie == null)
             {
                 return NotFound();
             }
-            existingMovie.id = movie.id;
-            existingMovie.title = movie.title;
-            existingMovie.description = movie.description;
-            existingMovie.releaseDate = movie.releaseDate;
-            existingMovie.directorId = movie.directorId;
-            existingMovie.category = movie.category;
+            existingMovie.Id = movie.Id;
+            existingMovie.Title = movie.Title;
+            existingMovie.Description = movie.Description;
+            existingMovie.ReleaseDate = movie.ReleaseDate;
+            existingMovie.DirectorID = movie.DirectorID;
+            existingMovie.Category = movie.Category;
 
             _repository.UpdateMovie(existingMovie);
 
@@ -59,7 +59,7 @@ namespace Nextflix.Controllers
             return NoContent();
         }
         [HttpPost]
-        public void CreateDog([FromBody] Movie movie)
+        public void CreateMovie([FromBody] Movie movie)
         {
             _repository.CreateMovie(movie);
         }

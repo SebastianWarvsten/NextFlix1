@@ -29,7 +29,7 @@ namespace Nextflix.Repositories
 
         public Movie GetMovie(int id)
         {
-            return _context.Movie.Where(item => item.id == id).FirstOrDefault();
+            return _context.Movie.Where(item => item.Id == id).FirstOrDefault();
 
         }
 

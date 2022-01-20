@@ -9,7 +9,7 @@ using Nextflix.Data;
 namespace Nextflix.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20220119084611_InitialCreate")]
+    [Migration("20220120103527_InitialCreate")]
     partial class InitialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -25,10 +25,10 @@ namespace Nextflix.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    b.Property<string>("firstName")
+                    b.Property<string>("FirstName")
                         .HasColumnType("text");
 
-                    b.Property<string>("lastName")
+                    b.Property<string>("LastName")
                         .HasColumnType("text");
 
                     b.HasKey("Id");
@@ -38,26 +38,28 @@ namespace Nextflix.Migrations
 
             modelBuilder.Entity("Nextflix.Entities.Movie", b =>
                 {
-                    b.Property<int>("id")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    b.Property<int>("category")
+                    b.Property<int>("Category")
                         .HasColumnType("int");
 
-                    b.Property<string>("description")
+                    b.Property<string>("Description")
                         .HasColumnType("text");
 
-                    b.Property<int>("directorId")
+                    b.Property<int>("DirectorID")
                         .HasColumnType("int");
 
-                    b.Property<DateTime>("releaseDate")
+                    b.Property<DateTime>("ReleaseDate")
                         .HasColumnType("datetime");
 
-                    b.Property<string>("title")
+                    b.Property<string>("Title")
                         .HasColumnType("text");
 
-                    b.HasKey("id");
+                    b.HasKey("Id");
+
+                    b.HasIndex("DirectorID");
 
                     b.ToTable("Movie");
                 });
@@ -82,6 +84,10 @@ namespace Nextflix.Migrations
 
                     b.HasKey("Id");
 
+                    b.HasIndex("MovieID");
+
+                    b.HasIndex("UserID");
+
                     b.ToTable("Review");
                 });
 
@@ -100,6 +106,51 @@ namespace Nextflix.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Users");
+                });
+
+            modelBuilder.Entity("Nextflix.Entities.Movie", b =>
+                {
+                    b.HasOne("Nextflix.Entities.Director", "Director")
+                        .WithMany("Movie")
+                        .HasForeignKey("DirectorID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Director");
+                });
+
+            modelBuilder.Entity("Nextflix.Entities.Review", b =>
+                {
+                    b.HasOne("Nextflix.Entities.Movie", "Movie")
+                        .WithMany("Reviews")
+                        .HasForeignKey("MovieID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("Nextflix.Entities.User", "User")
+                        .WithMany("Reviews")
+                        .HasForeignKey("UserID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Movie");
+
+                    b.Navigation("User");
+                });
+
+            modelBuilder.Entity("Nextflix.Entities.Director", b =>
+                {
+                    b.Navigation("Movie");
+                });
+
+            modelBuilder.Entity("Nextflix.Entities.Movie", b =>
+                {
+                    b.Navigation("Reviews");
+                });
+
+            modelBuilder.Entity("Nextflix.Entities.User", b =>
+                {
+                    b.Navigation("Reviews");
                 });
 #pragma warning restore 612, 618
         }

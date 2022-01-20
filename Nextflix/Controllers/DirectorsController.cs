@@ -45,8 +45,8 @@ namespace Nextflix.Controllers
             {
                 return NotFound();
             }
-            selectedDirector.firstName = director.firstName;
-            selectedDirector.lastName = director.lastName;
+            selectedDirector.FirstName = director.FirstName;
+            selectedDirector.LastName = director.LastName;
             _repository.UpdateDirector(selectedDirector);
             return Ok();
         }
@@ -59,13 +59,13 @@ namespace Nextflix.Controllers
         }
 
         [HttpPost]
-        public ActionResult<Director> AddDog(Director director)
+        public ActionResult<Director> AddDirector(Director director)
         {
             Director nDirector = new Director()
             {
                 Id = director.Id,
-                firstName = director.firstName,
-                lastName = director.lastName,
+                FirstName = director.FirstName,
+                LastName = director.LastName,
             };
             _repository.AddDirector(director);
             return CreatedAtAction(nameof(GetDirector), new { Id = director.Id }, director);
